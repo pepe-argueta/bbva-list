@@ -41,7 +41,7 @@
 
       add() {
         this.dispatchEvent( new CustomEvent('add-list', {
-          detail: this.value,
+          detail: this.valueHijo,
           bubbles: true,
           composed: true
         }))
