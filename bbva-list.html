@@ -10,7 +10,7 @@
       }
     </style>
     <h2>Hello [[prop1]]!</h2>
-    <paper-input name="name" label="Nombre" value="{{valueHijo::input}}"></paper-input>
+    <paper-input name="name" label="Nombre" value="{{valueHijo::input}}" on-bbva-list="add"></paper-input>
     <paper-button raised on-click="add">Agregar</paper-button>
   </template>
 
@@ -34,13 +34,13 @@
           valueHijo: {
             type: String,
             notify: true,
-            reflectAttribute: true
+            reflectToAttribute: true,
           }
         };
       }
 
       add() {
-        this.dispatchEvent( new CustomEvent('onClickAdd', {
+        this.dispatchEvent( new CustomEvent('add-list', {
           detail: this.value,
           bubbles: true,
           composed: true
