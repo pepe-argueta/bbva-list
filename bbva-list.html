@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<dom-module id="bbva-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <paper-input name="name" label="Nombre" value="{{value::input}}"></paper-input>
+    <paper-button raised on-click="add">Agregar</paper-button>
+  </template>
+
+  <script>
+    /**
+     * `bbva-list`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class BbvaList extends Polymer.Element {
+      static get is() { return 'bbva-list'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'bbva-list'
+          }
+        };
+      }
+
+      add() {
+        this.dispatchEvent( new CustomEvent('onClickAdd', {
+          detail: this.value,
+          bubbles: true,
+          composed: true
+        }))
+      }
+    }
+
+    window.customElements.define(BbvaList.is, BbvaList);
+  </script>
+</dom-module>
